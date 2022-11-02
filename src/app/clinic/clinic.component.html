@@ -1,0 +1,94 @@
+
+<div class="container">
+    <div class="left-container">
+      <div class="content-wrapper">
+        <div class="date-range-wrapper">
+          <div>
+            <mat-form-field class="datepicker-input" appearance="outline">
+              <mat-label class="health-chart-date-picker"
+                >Selectstartdate</mat-label
+              >
+              <input
+                matInput
+                [matDatepicker]="startDate"
+                (dateChange)="changeFromDate($event)"
+                (click)="startDate.open()"
+                (focus)="startDate.open()"
+                [value]="fromDate"
+                readonly
+                [min]="minDate"
+                [max]="toDate"
+                class="health-chart-date-picker"
+                disabled
+              />
+              <mat-datepicker-toggle   matSuffix [for]="startDate">
+                <mat-icon class="date-picker-icon" matDatepickerToggleIcon>calendar_today</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #startDate disabled="false"></mat-datepicker>
+              <div class="datepicker-overlay" (click)="startDate.open()"></div>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="datepicker-input" appearance="outline">
+              <mat-label class="health-chart-date-picker">FORM_SELECTENDATE</mat-label>
+              <input
+                matInput
+                [matDatepicker]="endDate"
+                (dateChange)="changeToDate($event)"
+                (click)="endDate.open()"
+                (focus)="endDate.open()"
+                [value]="toDate"
+                readonly
+                [min]="fromDate"
+                [max]="maxDate"
+                class="health-chart-date-picker"
+                disabled
+              />
+              <mat-datepicker-toggle  matSuffix [for]="endDate">
+                <mat-icon class="date-picker-icon" matDatepickerToggleIcon>calendar_today</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #endDate disabled="false"></mat-datepicker>
+              <div class="datepicker-overlay" (click)="endDate.open()"></div>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="range">
+          <div>
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="moveRange(false)"
+              [disabled]="customSelection"
+              class="time-range-button">
+              <mat-icon aria-hidden="false">navigate_before</mat-icon>
+            </button>
+          </div>
+          <mat-form-field id="date-selection-dropdown" class="date-selection">
+            <mat-select [(ngModel)]="selectedRange"  (valueChange)="updateRange($event)">
+              <mat-option class="day-option" [value]="dayRanges.ThreeDays">DAYS</mat-option>
+              <mat-option class="day-option" [value]="dayRanges.SevenDays">7DAYS</mat-option>
+              <mat-option class="day-option" [value]="dayRanges.FourteenDays">14DAYS</mat-option>
+              <mat-option class="day-option" [value]="dayRanges.OneMonth">1MONTH</mat-option>
+              <mat-option class="day-option" [value]="dayRanges.ThreeMonths">3MONTHS</mat-option>
+              <mat-option class="day-option" [value]="dayRanges.Custom">CUSTOM</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="moveRange()"
+              [disabled]="customSelection"
+              class="time-range-button">
+              <mat-icon aria-hidden="false">navigate_next</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    {{fromDate}}
+  </div>
