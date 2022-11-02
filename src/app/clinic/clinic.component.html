@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="container">
     <div class="left-container">
       <div class="content-wrapper">
@@ -91,4 +91,22 @@
 
   <div>
     {{fromDate}}
+  </div> -->
+
+  
+<div>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh;">
+      <div style="display: block;width: 1000px;">
+        <canvas  baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [type]="barChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+          >
+        </canvas>
+      </div>
+      <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+    </div>
   </div>
